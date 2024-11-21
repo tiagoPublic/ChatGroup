@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  zoo1:
+    image: zookeeper:3.5
+    hostname: zoo1
+    container_name: zoo1
+    ports:
+      - "2181:2181"
+    networks:
+      - zknet
+
+  zoo2:
+    image: zookeeper:3.5
+    hostname: zoo2
+    container_name: zoo2
+    ports:
+      - "2182:2181"
+    networks:
+      - zknet
+
+  zoo3:
+    image: zookeeper:3.5
+    hostname: zoo3
+    container_name: zoo3
+    ports:
+      - "2183:2181"
+    networks:
+      - zknet
+
+networks:
+  zknet:
+    driver: bridge

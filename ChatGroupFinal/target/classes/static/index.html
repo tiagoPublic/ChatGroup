@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D11-ChatRoom</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="username-page">
+        <div class="username-page-container">
+            <h1 class="title">Login</h1>
+            <form id="loginForm" name="loginForm">
+                <div class="form-group">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="Username" autocomplete="off" class="form-control white-text" />
+                </div>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" class="form-control white-text" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent username-submit">Enter ChatRoom</button>
+                </div>
+                <p id="login-error" class="error-message" style="color: white"></p>
+            </form>
+            <button id="showSignUp" class="accent">Sign Up</button>
+        </div>
+    </div>
+
+    <div id="signup-page" class="form-container hidden">
+        <div class="signup-page-container">
+            <h1 class="title">Sign Up</h1>
+            <form id="registerForm" name="registerForm">
+                <div class="form-group">
+                    <label for="new-username"></label>
+                    <input type="text" id="new-username" placeholder="New Username" autocomplete="off" class="form-control white-text" />
+                </div>
+                <div class="form-group">
+                    <label for="new-password"></label>
+                    <input type="password" id="new-password" placeholder="Password" autocomplete="off" class="form-control white-text" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent signup-submit">Sign Up</button>
+                </div>
+                <p id="register-error" class="error-message" style="color: white"></p>
+                <p id="register-success" class="success-message" style="color: white"></p>
+            </form>
+            <button id="showLogin" class="accent">Back to Login</button>
+        </div>
+    </div>
+
+    <div id="chat-page" class="hidden">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>D11-ChatRoom</h2>
+            </div>
+            <div class="connecting">
+                Connecting...
+            </div>
+            <ul id="messageArea">
+
+            </ul>
+            <form id="messageForm" name="messageForm">
+                <div class="form-group">
+                    <div class="input-group clearfix">
+                        <label for="message"></label><input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control" />
+                        <button type="submit" class="primary">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="main.js"></script>
+<script>
+    document.getElementById('showSignUp').addEventListener('click', function() {
+        document.getElementById('username-page').classList.add('hidden');
+        document.getElementById('signup-page').classList.add('active');
+    });
+
+    document.getElementById('showLogin').addEventListener('click', function() {
+        // Limpa as mensagens de erro na página de registro
+        document.getElementById('register-error').textContent = '';
+        document.getElementById('register-success').textContent = '';
+
+        // Exibe a página de login e oculta a página de registro
+        document.getElementById('signup-page').classList.remove('active');
+        document.getElementById('username-page').classList.remove('hidden');
+        window.location.reload()
+    });
+
+</script>
+</body>
+</html>

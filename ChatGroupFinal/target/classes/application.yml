@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      username: tiago
+      password: fcporto
+      host: localhost
+      port: 27017
+      database: ChatGroup
+      authentication-database: admin
